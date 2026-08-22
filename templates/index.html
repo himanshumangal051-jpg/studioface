@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}StudioFace AI — Your studio, beautifully connected{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">PROFESSIONAL STUDIO WORKSPACE</div>
+    <h1>Make every event<br><span>feel premium.</span></h1>
+    <p class="hero-text">StudioFace brings studio accounts, event uploads and Google Drive delivery into one polished workspace.</p>
+    <div class="hero-actions"><a class="btn primary" href="{{ url_for('client_signup') }}">Create studio account</a><a class="btn secondary" href="{{ url_for('client_login') }}">Sign in</a></div>
+    <div class="trust-row"><span>✓ Secure accounts</span><span>✓ Google Drive sync</span><span>✓ Event-based delivery</span></div>
+  </div>
+  <div class="hero-card glass">
+    <div class="card-top"><span>STUDIO OVERVIEW</span><span class="status-pill live">LIVE</span></div>
+    <div class="hero-stat"><strong>24</strong><span>active events</span></div>
+    <div class="mini-grid"><div><b>1,248</b><span>media files</span></div><div><b>99.9%</b><span>sync reliability</span></div></div>
+    <div class="activity"><div class="activity-dot"></div><div><b>Google Drive</b><span>Connected and ready</span></div><span class="activity-check">✓</span></div>
+    <div class="activity"><div class="activity-dot violet"></div><div><b>Wedding — Aarav & Kiara</b><span>68 files uploaded</span></div><span class="activity-time">2m</span></div>
+  </div>
+</section>
+<section class="feature-grid">
+  <article class="feature glass"><span class="icon">01</span><h3>Client-ready dashboard</h3><p>Keep your studio identity, events and upload workflow together.</p></article>
+  <article class="feature glass"><span class="icon">02</span><h3>Google Drive delivery</h3><p>Connect a client Drive and automatically organize each event into a folder.</p></article>
+  <article class="feature glass"><span class="icon">03</span><h3>Safer by design</h3><p>OTP protection, session security, rate limits and upload validation built in.</p></article>
+</section>
+{% endblock %}

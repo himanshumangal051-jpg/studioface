@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Create studio — StudioFace AI{% endblock %}
+{% block content %}
+<section class="auth-wrap"><div class="auth-card glass wide-card"><div class="eyebrow">START YOUR STUDIO</div><h1>Create your workspace</h1><p class="muted">Verify your email once, then manage events and delivery from one place.</p>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}" /><div class="form-grid">
+<div class="two-col"><label>Studio name<input name="studio_name" required placeholder="Mangal Photography"></label><label>Owner name<input name="owner_name" placeholder="Himanshu Mangal"></label></div>
+<div class="two-col"><label>Email<input id="signupEmail" name="email" type="email" autocomplete="email" required placeholder="studio@example.com"></label><label>Phone<input name="phone" type="tel" placeholder="+91 98xxxxxxxx"></label></div>
+<div class="otp-row"><label>OTP<input id="otp" name="otp" inputmode="numeric" maxlength="6" placeholder="6-digit code"></label><button type="button" id="sendOtp" class="btn secondary otp-btn">Send OTP</button></div>
+<label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"></label>
+<button class="btn primary wide" type="submit">Create studio account</button>
+</form>
+<div id="otpMessage" class="helper"></div><div class="auth-foot">Already registered? <a href="{{ url_for('client_login') }}">Sign in</a></div>
+</div></section>
+{% endblock %}

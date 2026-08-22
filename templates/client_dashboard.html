@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard — {{ studio_name or 'StudioFace' }}{% endblock %}
+{% block content %}
+<section class="dashboard-head"><div><div class="eyebrow">STUDIO WORKSPACE</div><h1>{{ studio_name or 'Your Studio' }}</h1><p class="muted">Manage event delivery without the clutter.</p></div><a class="btn secondary" href="{{ url_for('client_logout') }}">Sign out</a></section>
+<section class="dashboard-grid">
+<div class="panel glass drive-panel"><div class="panel-head"><div><span class="eyebrow">CLOUD DELIVERY</span><h2>Google Drive</h2></div><span class="status-pill {{ 'live' if has_drive else 'pending' }}">{{ 'CONNECTED' if has_drive else 'PENDING' }}</span></div>
+{% if has_drive %}<p class="muted">Your Drive is connected. New event media can be uploaded into organized folders.</p><div class="connected-box"><span class="check">✓</span><div><b>Ready to upload</b><small>Drive folder: StudioFace Events</small></div></div>{% else %}<p class="muted">Connect Google Drive before creating your first event upload.</p><a class="btn primary" href="{{ url_for('google_connect') }}">Connect Google Drive</a>{% endif %}
+</div>
+<div class="panel glass"><div class="panel-head"><div><span class="eyebrow">NEW EVENT</span><h2>Upload media</h2></div></div>
+<form id="eventForm" class="form-grid" enctype="multipart/form-data"><label>Event title<input name="event_name" id="eventName" required maxlength="200" placeholder="Wedding — Aarav & Kiara"></label><label>Photos / videos<input name="media_files" id="mediaFiles" type="file" multiple accept="image/*,video/*,audio/*" required></label><div id="fileSummary" class="helper"></div><button class="btn primary wide" type="submit" {% if not has_drive %}disabled{% endif %}>Upload & create event</button></form><div id="uploadMessage" class="helper"></div>
+</div>
+</section>
+<section class="panel glass events-panel"><div class="panel-head"><div><span class="eyebrow">EVENT LIBRARY</span><h2>Your active events</h2></div><span class="count-badge">{{ events|length }}</span></div>
+{% if events %}<div class="event-list">{% for e in events %}<article class="event-item"><div class="event-icon">✦</div><div class="event-main"><h3>{{ e[2] }}</h3><p>{{ e[3] }} · Event ID {{ e[1] }}</p></div><div class="event-state">SYNCED</div></article>{% endfor %}</div>{% else %}<div class="empty-state"><div class="empty-icon">✦</div><h3>No events yet</h3><p>Create your first event and send the media straight to Google Drive.</p></div>{% endif %}
+</section>
+{% endblock %}
